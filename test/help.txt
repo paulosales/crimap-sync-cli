@@ -1,0 +1,17 @@
+Usage: crime-sync [command]
+
+A syncronizer client tool to import crime data to crimemap database.
+
+Options:
+  -V, --version                output the version number
+  -h, --help                   output usage information
+
+Commands:
+  login                        Log-in into crimemap database.
+  logout                       Log-out from crimemap database.
+  import <pdf-file>            Import crimes data from pdf file crimemap database.
+  list-imports [options]       List the top 10 most recents data imports.
+  remove-import <import-hash>  Remove a crime data import.
+
+Examples:
+  $ crime-sync import crimesdata.pdf

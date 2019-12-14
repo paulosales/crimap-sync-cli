@@ -1,0 +1,44 @@
+{
+  "name": "crimemap-sync-cli",
+  "version": "1.0.0",
+  "description": "A syncronizer client tool to import crime data to crimemap database.",
+  "main": "crime-sync.js",
+  "scripts": {
+    "test": "mocha --recursive test/",
+    "lint": "eslint . test --quiet"
+  },
+  "keywords": [
+    "sync",
+    "crimemap",
+    "import",
+    "data"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulosales/crimemap-sync-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/paulosales/crimemap-sync-cli/issues"
+  },
+  "homepage": "https://github.com/paulosales/crimemap-sync-cli#readme",
+  "author": "Paulo Rogério Sales Santos",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "child_process": "^1.0.2",
+    "eslint": "^5.12.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.15.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "mocha": "^6.2.2"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "commander": "^3.0.2"
+  },
+  "bin": {
+    "crime": "./crime-sync.js"
+  }
+}

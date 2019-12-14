@@ -1,0 +1,33 @@
+version: ~> 1.0
+
+sudo: true
+dist: trusty
+
+language: node_js
+
+branches:
+  only:
+    - master
+    - dev
+
+cache: yarn
+
+install:
+  - yarn install
+
+jobs:
+  include:
+    - stage: lint
+      node_js: '13'
+      script:
+        - yarn lint
+    - stage: test
+      node_js: '13'
+      sudo: required
+      script:
+        - yarn test
+
+stages:
+  - lint
+  - test
+
