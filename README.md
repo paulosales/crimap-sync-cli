@@ -1,13 +1,13 @@
-# crime-sync &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/paulosales/crimemap-sync-cli/blob/master/LICENSE) [![Build Status](https://travis-ci.com/paulosales/crimemap-sync-cli.svg?branch=master)](https://travis-ci.com/paulosales/crimemap-sync-cli)
+# crime-sync-cli &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/paulosales/crimemap-sync-cli/blob/master/LICENSE) [![Build Status](https://travis-ci.com/paulosales/crimemap-sync-cli.svg?branch=master)](https://travis-ci.com/paulosales/crimemap-sync-cli)
 
-**crime-sync** is CLI tool that allows you to import crimes data to crimemap database.
+**crime-sync-cli** is CLI tool that allows you to import crimes data to crimemap database.
 
 ## Installation
 
-Install crime-sync CLI with
+Install **crime-sync-cli** CLI with
 
 ```bash
-$ npm install -g paulosales/crime-sync
+$ npm install -g paulosales/crime-sync-cli
 ```
 
 Test the installation with
@@ -18,7 +18,7 @@ $ crime-sync --help
 
 ## Usage
 
-```
+```text
 Usage: crime-sync [command]
 
 A syncronizer client tool to import crime data to crimemap database.
@@ -40,4 +40,4 @@ Examples:
 
 ## License
 
-crime-sync is [MIT Licensed](https://github.com/paulosales/crimemap-sync-cli/blob/master/LICENSE)
+**crime-sync-cli** is [MIT Licensed](https://github.com/paulosales/crimemap-sync-cli/blob/master/LICENSE)
