@@ -39,6 +39,6 @@
     "commander": "^3.0.2"
   },
   "bin": {
-    "crime": "./crime-sync.js"
+    "crime-sync": "./crime-sync.js"
   }
 }
