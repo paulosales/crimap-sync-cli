@@ -38,6 +38,10 @@ Examples:
   $ crime-sync import crimesdata.pdf
 ```
 
+## Tech stack
+
+* [Commander](https://github.com/tj/commander.js/)
+
 ## License
 
 **crime-sync-cli** is [MIT Licensed](https://github.com/paulosales/crimemap-sync-cli/blob/master/LICENSE)
