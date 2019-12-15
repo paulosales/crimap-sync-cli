@@ -1,7 +1,7 @@
 version: ~> 1.0
 
 sudo: true
-dist: trusty
+dist: bionic
 
 language: node_js
 
@@ -30,4 +30,3 @@ jobs:
 stages:
   - lint
   - test
-

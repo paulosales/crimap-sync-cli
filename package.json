@@ -15,13 +15,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/paulosales/crimemap-sync-cli.git"
+    "url": "https://github.com/paulosales/crimemap-sync-cli.git"
   },
   "bugs": {
     "url": "https://github.com/paulosales/crimemap-sync-cli/issues"
   },
   "homepage": "https://github.com/paulosales/crimemap-sync-cli#readme",
-  "author": "Paulo Rogério Sales Santos",
+  "author": "Paulo Rogerio Sales Santos <paulosales@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "chai": "^4.2.0",
@@ -39,6 +39,6 @@
     "commander": "^3.0.2"
   },
   "bin": {
-    "crime": "./crime-sync.js"
+    "crime-sync": "./crime-sync.js"
   }
 }
