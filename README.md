@@ -45,4 +45,4 @@ Examples:
 
 ## License
 
-**crime-sync-cli** is [MIT Licensed](https://github.com/paulosales/crimemap-sync-cli/blob/master/LICENSE)
+[MIT](https://github.com/paulosales/crimemap-sync-cli/blob/master/LICENSE) © [paulosales](https://github.com/paulosales/)
