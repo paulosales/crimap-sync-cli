@@ -17,6 +17,7 @@ cache: yarn
 
 install:
   - yarn install
+  - yarn global add codecov --prefix /usr/local
 
 jobs:
   include:
@@ -29,7 +30,14 @@ jobs:
       sudo: required
       script:
         - yarn test
+    - stage: codecov
+      node_js: '13'
+      sudo: required
+      script:
+        - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
+        - codecov
 
 stages:
   - lint
   - test
+  - codecov
