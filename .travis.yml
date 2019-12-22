@@ -17,7 +17,7 @@ cache: yarn
 
 install:
   - yarn install
-  - yarn global add codecov --prefix /usr/local
+  - yarn global add codecov
 
 jobs:
   include:
