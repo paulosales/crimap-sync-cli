@@ -16,7 +16,6 @@ env:
 cache: yarn
 
 install:
-  - apt-get install istanbul
   - yarn install
   - yarn global add codecov
 
