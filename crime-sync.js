@@ -34,7 +34,7 @@ program
   .command('list-imports')
   .description('List the top 10 most recents data imports.')
   .option('-a, --all', 'List all imports.')
-  .option('-t, --top <quantity>', 'List the top <quantity> imports.')
+  .option('-t, --top <quantity>', 'List the top <quantity> imports.', 10)
   .action(commands.listImports);
 
 program
