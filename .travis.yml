@@ -23,6 +23,7 @@ cache: yarn
 install:
   - yarn install
   - yarn global add codecov
+  - yarn global add istanbul
 
 script:
   - yarn lint
