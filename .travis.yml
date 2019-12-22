@@ -28,5 +28,5 @@ install:
 script:
   - yarn lint
   - yarn test
-  - nyc --reporter=json ./node_modules/mocha/bin/_mocha
+  - nyc --reporter=lcov ./node_modules/mocha/bin/_mocha
   - codecov
