@@ -10,6 +10,9 @@ branches:
     - master
     - dev
 
+env:
+  - CODECOV_TOKEN=0e354bd2-c9a3-471f-a187-521a7ac7d713
+
 cache: yarn
 
 install:
