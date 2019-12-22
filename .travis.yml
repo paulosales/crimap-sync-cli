@@ -16,28 +16,12 @@ env:
 cache: yarn
 
 install:
+  - apt-get install istanbul
   - yarn install
   - yarn global add codecov
 
-jobs:
-  include:
-    - stage: lint
-      node_js: '13'
-      script:
-        - yarn lint
-    - stage: test
-      node_js: '13'
-      sudo: required
-      script:
-        - yarn test
-    - stage: codecov
-      node_js: '13'
-      sudo: required
-      script:
-        - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
-        - codecov
-
-stages:
-  - lint
-  - test
+script:
+  - yarn lint
+  - yarn test
+  - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
   - codecov
