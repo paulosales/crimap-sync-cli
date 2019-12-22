@@ -1,21 +1,8 @@
 /* eslint-env node, mocha */
-const exec = require('child_process').exec;
 const path = require('path');
 const fs = require('fs');
 const assert = require('chai').assert;
-
-function crimeSync (args = [], cwd = '..') {
-  return new Promise((resolve, reject) => {
-    try {
-      exec(`node ${path.resolve('crime-sync.js')} ${args.join(' ')}`, { cwd }, (error, stdout, stderr) => {
-        resolve({ error, stdout, stderr })
-      })
-    }
-    catch(e) {
-      reject(e);
-    }
-  })
-}
+const crimeSync = require('./helpers/crime-sync-runner');
 
 describe('crime-sync', () => {
   let helpText;
@@ -33,9 +20,13 @@ describe('crime-sync', () => {
     )
   })
 
-  it('should return the help text', async () => {
-    const ret = await crimeSync();
-    assert.equal(ret.stdout, helpText);
+  context('with no parameters', () => {
+    
+    it('should return the help text', async () => {
+      const ret = await crimeSync();
+      assert.equal(ret.stdout, helpText);
+    });
+
   });
 
 });

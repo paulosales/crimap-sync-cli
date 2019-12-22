@@ -4,8 +4,8 @@
   "description": "A syncronizer client tool to import crime data to crimemap database.",
   "main": "crime-sync.js",
   "scripts": {
-    "test": "mocha --recursive test/",
-    "lint": "eslint . test --quiet"
+    "lint": "eslint . test --quiet",
+    "test": "nyc --reporter=lcov mocha --recursive test/"
   },
   "keywords": [
     "sync",
