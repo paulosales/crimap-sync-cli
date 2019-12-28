@@ -7,7 +7,7 @@ Options:
   -h, --help                   output usage information
 
 Commands:
-  login                        Log-in into crimemap database.
+  login <username> <password>  Log-in into crimemap database.
   logout                       Log-out from crimemap database.
   import <pdf-file>            Import crimes data from pdf file crimemap database.
   list-imports [options]       List the top 10 most recents data imports.
