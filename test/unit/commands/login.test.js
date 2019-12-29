@@ -66,7 +66,7 @@ describe('[unit] crimesync login command', () => {
       const mutateStub = sandbox.stub().returns(loginResult);
       const createClientStub = sandbox.stub().returns({mutate: mutateStub});
       const setConfigSpy = sandbox.spy(config, 'set');
-      const saveConfigSpy = sandbox.spy(config, 'save');
+      const saveConfigStub = sandbox.stub(config, 'save');
     
       const loginCommand = proxyquire(
         '../../../src/commands/login', 
@@ -82,7 +82,7 @@ describe('[unit] crimesync login command', () => {
       chai.assert.isTrue( stdOutWriteStub.calledOnce );
       chai.assert.isTrue( stdOutWriteStub.calledWith('You are logged in.\n') );
       chai.assert.isTrue( setConfigSpy.calledOnce );
-      chai.assert.isTrue( saveConfigSpy.calledOnce );
+      chai.assert.isTrue( saveConfigStub.calledOnce );
     });
   });
 });

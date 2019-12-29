@@ -7,7 +7,7 @@
 
 /* eslint-env mocha */
 const assert = require('chai').assert;
-const crimeSync = require('../crime-sync-runner');
+const crimeSync = require('../test-utils/crime-sync-runner');
 
 describe('[functional] crimesync login command', () => {  
 

@@ -9,7 +9,7 @@
 const path = require('path');
 const fs = require('fs');
 const assert = require('chai').assert;
-const crimeSync = require('./crime-sync-runner');
+const crimeSync = require('./test-utils/crime-sync-runner');
 
 describe('[functional] crime-sync', () => {
   let helpText;
@@ -34,4 +34,10 @@ describe('[functional] crime-sync', () => {
     });
   });
 
+  context('with a invalid command', () => {
+    it('should throw a error', async () => {
+      const ret = await crimeSync(['invalid-command']);
+      assert.equal(ret.stderr, 'Invalid command: invalid-command\nSee --help for a list of available commands.\n');
+    })
+  })
 });

@@ -9,9 +9,9 @@ Options:
 Commands:
   login <username> <password>  Log-in into crimemap database.
   logout                       Log-out from crimemap database.
-  import <pdf-file>            Import crimes data from pdf file crimemap database.
+  import <pdf-url>             Import crimes data from pdf file crimemap database.
   list-imports [options]       List the top 10 most recents data imports.
-  remove-import <import-hash>  Remove a crime data import.
+  remove-import <ID>           Remove a crime data import.
 
 Examples:
-  $ crime-sync import crimesdata.pdf
+  $ crime-sync import http://domain.com/files/crimesdata-2019-02-05.pdf

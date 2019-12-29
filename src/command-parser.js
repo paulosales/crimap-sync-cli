@@ -31,7 +31,7 @@ module.exports = function commandParser(argv) {
     .action(commands.logout);
   
   program
-    .command('import <pdf-file>')
+    .command('import <pdf-url>')
     .description('Import crimes data from pdf file crimemap database.')
     .action(commands.import);
   
@@ -43,16 +43,22 @@ module.exports = function commandParser(argv) {
     .action(commands.listImports);
   
   program
-    .command('remove-import <import-hash>')
+    .command('remove-import <ID>')
     .description('Remove a crime data import.')
     .action(commands.removeImport);
   
   program.on('--help', () => {
     process.stdout.write('\n');
     process.stdout.write('Examples:\n');
-    process.stdout.write(`  $ ${chalk.blueBright(`${programName} import`)} ${chalk.greenBright('crimesdata.pdf')}\n`);
+    process.stdout.write(`  $ ${chalk.blueBright(`${programName} import`)} ${chalk.greenBright('http://domain.com/files/crimesdata-2019-02-05.pdf')}\n`);
   });
   
+  // error on unknown commands
+  program.on('command:*', function () {
+    process.stderr.write(`Invalid command: ${program.args.join(' ')}\nSee --help for a list of available commands.\n`);
+    //process.exit(1);
+  });
+
   program.parse(argv);
   
   var NO_COMMAND_SPECIFIED = program.args.length === 0;

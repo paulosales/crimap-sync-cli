@@ -7,30 +7,32 @@
 
 const debug = require('debug').debug('crimemap-sync-cli');
 const gql = require('graphql-tag');
-const createClient = require('../graphql/client');
+const getClient = require('../graphql/client');
 const { config } = require('../config');
 
-module.exports = async (username, password) => {
-  debug(`${username} is loging-in.`);
-
-  const client = await createClient();
-
-  const LOGIN = gql`
-    mutation login($username: String!, $password: String!) {
-      login(username: $username, password: $password) {
-        success message token
-      }
+const LOGIN = gql`
+  mutation login($username: String!, $password: String!) {
+    login(username: $username, password: $password) {
+      success message token
     }
-  `;
+  }
+`;
+
+module.exports = async (username, password) => {
+  debug('%s is loging-in.', username);
+
+  const client = await getClient();
 
   const res = await client.mutate({mutation: LOGIN, variables: {username, password}});
   if (res.data.login.success) {
-    debug(`${username} logged successfuly.`);
-    config.set('authToken', res.data.login.token);
-    config.save();
+    debug('%s logged successfuly.', username);
+    debug('saving authtoken');
+    await config.set('authToken', res.data.login.token);
+    await config.save();
+    debug('authtoken saved.');
     process.stdout.write('You are logged in.\n');    
   } else {
-    debug(`${username} failed to login.`);
+    debug('%s failed to login.', username);
     process.stderr.write(res.data.login.message + '\n');
   }
 };

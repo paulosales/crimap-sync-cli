@@ -5,7 +5,36 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-module.exports = async (pdfFile) => {
-  console.log(`Importing ${pdfFile}`);
-  //Call import service here
+const debug = require('debug').debug('crimemap-sync-cli');
+const gql = require('graphql-tag');
+const getClient = require('../graphql/client');
+
+const IMPORT = gql`
+  mutation Import($pdfUrl: String!) {
+    import(pdfUrl: $pdfUrl) {
+      id startDate status file { name }
+    }
+  }
+`;
+
+module.exports = async (pdfUrl) => {
+  debug('Importing file %s', pdfUrl);
+
+  const client = await getClient();
+
+  try {
+    const imported = await client.mutate({
+      mutation: IMPORT,
+      variables: { pdfUrl }
+    });
+    const { id, file } = imported.data.import;
+
+    debug('File %s imported. Generated ID %s.', file.name, id);
+    process.stdout.write(`File '${file.name}' imported.\nGenerated ID: ${id}\n`);
+  } catch(e) {
+    debug('Error importing file %s: ', pdfUrl, e.message);
+    e.graphQLErrors.forEach( error => {
+      process.stderr.write(`${error.message}\n`);
+    });
+  }
 };
