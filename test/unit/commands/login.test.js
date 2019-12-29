@@ -35,12 +35,12 @@ describe('[unit] crimesync login command', () => {
         }
       };
       const mutateStub = sandbox.stub().returns(loginResult);
-      const createClientStub = sandbox.stub().returns({mutate: mutateStub});
+      const getClientStub = sandbox.stub().returns({mutate: mutateStub});
     
       const loginCommand = proxyquire(
         '../../../src/commands/login', 
         {
-          "../graphql/client": createClientStub
+          "../graphql/client": getClientStub
         }
       );
 
@@ -64,14 +64,14 @@ describe('[unit] crimesync login command', () => {
         }
       };
       const mutateStub = sandbox.stub().returns(loginResult);
-      const createClientStub = sandbox.stub().returns({mutate: mutateStub});
+      const getClientStub = sandbox.stub().returns({mutate: mutateStub});
       const setConfigSpy = sandbox.spy(config, 'set');
       const saveConfigStub = sandbox.stub(config, 'save');
     
       const loginCommand = proxyquire(
         '../../../src/commands/login', 
         {
-          "../graphql/client": createClientStub
+          '../graphql/client': getClientStub
         }
       );
 
