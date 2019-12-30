@@ -1,0 +1,42 @@
+version: "3.6"
+
+volumes:
+  cm_database_files:
+  cm_database_config:
+
+networks:
+  cm_network_api:
+    driver: bridge
+
+services:
+  database:
+    image: mongo:4.2
+    container_name: database_cli
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+      - MONGO_INITDB_ROOT_PASSWORD=mongopwd
+      - MONGO_INITDB_USERNAME=crimemap
+      - MONGO_INITDB_PASSWORD=crimemappwd
+      - MONGO_INITDB_DATABASE=crimemapdb
+    volumes:
+      - cm_database_files:/data/db
+      - cm_database_config:/data/configdb
+      - ./scripts/mongo:/docker-entrypoint-initdb.d
+    networks:
+      - cm_network_api
+    expose:
+      - "27017"
+  api:
+    image: prsales/crimemap-sync-api:latest
+    container_name: api_cli
+    environment:
+      - NODE_ENV=testing
+    links: 
+      - database
+    depends_on:
+      - database
+    networks:
+      - cm_network_api
+    ports:
+      - "4000:4000"
