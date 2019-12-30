@@ -5,7 +5,7 @@
   "main": "crime-sync.js",
   "scripts": {
     "lint": "eslint . test --quiet",
-    "test": "nyc --reporter=lcov mocha --recursive --exit --timeout 30000 test/"
+    "test": "nyc --reporter=lcov mocha --recursive --exit --timeout 120000 test/"
   },
   "keywords": [
     "sync",
