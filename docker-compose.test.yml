@@ -19,6 +19,7 @@ services:
       - MONGO_INITDB_USERNAME=crimemap
       - MONGO_INITDB_PASSWORD=crimemappwd
       - MONGO_INITDB_DATABASE=crimemapdb
+      - MONGO_INITDB_TEST_DATABASE=crimemapdb_test
     volumes:
       - cm_database_files:/data/db
       - cm_database_config:/data/configdb
