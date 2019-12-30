@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /**
  * Copyright (c) 2019-present, Paulo Rogério Sales Santos - <paulosales@gmail.com>
  *
@@ -7,6 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-const commandParser = require('./src/command-parser');
-
-commandParser(process.argv);
+module.exports = {
+  login: require('./login'),
+  logout: require('./logout'),
+  import: require('./import'),
+  listImports: require('./list-imports'),
+  removeImport: require('./remove-import')
+}
