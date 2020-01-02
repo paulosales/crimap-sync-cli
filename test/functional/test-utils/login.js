@@ -6,7 +6,12 @@
  */
 
 const crimeSync = require('./crime-sync-runner');
+const { config } = require('../../../src/config');
 
 module.exports = async () => {
-  await crimeSync(['login', 'johndoe', 'abc']);
+  const authData = await crimeSync(['login', 'johndoe', 'abc']);
+
+  console.dir(authData);
+  await config.set('authToken', authData.token);
+  await config.save();
 }

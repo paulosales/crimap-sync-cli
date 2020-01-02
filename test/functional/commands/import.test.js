@@ -17,8 +17,8 @@ describe('[functional] crime-sync import command', () => {
 
 	before(async () => {
 		await setServiceUrl('http://127.0.0.1:4000/');
-		await eraseImports();
 		await login();
+		await eraseImports();
 	});
 
 	after(async () => {
