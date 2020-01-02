@@ -28,22 +28,28 @@ module.exports = async (cmd) => {
   const client = await getClient();
   const top = cmd.all?0:Number.parseInt(cmd.top);
 
-  const imports = await client.query({
-    query: LIST_IMPORTS,
-    variables: {
-      top
-    }
-  });
+  try {
+    const imports = await client.query({
+      query: LIST_IMPORTS,
+      variables: {
+        top
+      }
+    });
 
-  process.stdout.write(`Top ${top!=0?top:'all'} imports\n`);
-  process.stdout.write(`---------------------------------------------------------------------------------------------\n`);
-  process.stdout.write('ID                       start date               finish date              status  author\n');
-  imports.data.listImports.forEach( imp => {
-    const fID = imp.id.toString();
-    const fStartDate = imp.startDate.toString();
-    const fEndData = imp.finishDate===null?'':imp.finishDate.toString();
-    const fStatus = imp.status.toString();
-    const fAuthor = imp.author.username.toString();
-    process.stdout.write(`${fID.padEnd(25)}${fStartDate.padEnd(25)}${fEndData.padEnd(25)}${fStatus.padEnd(8)}${fAuthor}\n`);
-  });
+    process.stdout.write(`Top ${top!=0?top:'all'} imports\n`);
+    process.stdout.write(`---------------------------------------------------------------------------------------------\n`);
+    process.stdout.write('ID                       start date               finish date              status  author\n');
+    imports.data.listImports.forEach( imp => {
+      const fID = imp.id.toString();
+      const fStartDate = imp.startDate.toString();
+      const fEndData = imp.finishDate===null?'':imp.finishDate.toString();
+      const fStatus = imp.status.toString();
+      const fAuthor = imp.author.username.toString();
+      process.stdout.write(`${fID.padEnd(25)}${fStartDate.padEnd(25)}${fEndData.padEnd(25)}${fStatus.padEnd(8)}${fAuthor}\n`);
+    });
+  } catch (e) {
+    e.graphQLErrors.forEach(error => {
+      process.stderr.write(`${error.message}\n`);
+    });
+  }
 };

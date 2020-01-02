@@ -10,13 +10,21 @@ const chai = require('chai');
 const crimeSync = require('../test-utils/crime-sync-runner');
 const eraseImports = require('../test-utils/erase-imports');
 const importFiles = require('../test-utils/import-files');
+const setServiceUrl = require('../test-utils/set-service-url');
+const login = require('../test-utils/login');
+const logout = require('../test-utils/logout');
 
 describe('[functional] crimesync list-import command', () => {
-
   before(async () => {
-    await eraseImports();
+    await setServiceUrl('http://127.0.0.1:4000/');
+    await login();
+		await eraseImports();    
     await importFiles(15);
-  });
+	});
+
+	after(async () => {
+		await logout();
+	});
 
   context('with no options', () => {
     it('should list the 10 most recents imports.', async () => {
