@@ -11,7 +11,6 @@ const { config } = require('../../../src/config');
 module.exports = async () => {
   const authData = await crimeSync(['login', 'johndoe', 'abc']);
 
-  console.dir(authData);
   await config.set('authToken', authData.token);
   await config.save();
 }
