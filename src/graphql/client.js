@@ -7,9 +7,11 @@
 
 const debug = require('debug').debug('crimemap-sync-cli');
 const readline = require('readline-sync');
-const fetch = require('node-fetch');const { ApolloClient } = require('apollo-client');
+const fetch = require('node-fetch');
+const { ApolloClient } = require('apollo-client');
 const { InMemoryCache } = require('apollo-cache-inmemory');
-const { HttpLink } = require('apollo-link-http');
+const { createHttpLink } = require('apollo-link-http');
+const { setContext } = require('apollo-link-context')
 const checkServiceUrl = require('../helpers/check-service-url');
 const { config } = require('../config');
 
@@ -39,15 +41,23 @@ async function getClient() {
       }
     }
 
+    const authToken = await config.get('authToken');
+
     const cache = new InMemoryCache();
-    const link = new HttpLink({
-      uri: serviceUrl,
-      fetch
+    
+    const httpLink = createHttpLink({uri: serviceUrl, fetch});
+    const authLink = setContext((_, { headers }) => {
+      return {
+        headers: {
+          ...headers,
+          authorization: authToken?`Bearer ${authToken}`: '',
+        }
+      }
     });
 
     client = new ApolloClient({
       cache,
-      link
+      link: authLink.concat(httpLink),
     }); 
   }
 

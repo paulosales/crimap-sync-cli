@@ -7,16 +7,22 @@
 
 /* eslint-env mocha, node */
 const assert = require('chai').assert;
-const { config } = require('../../../src/config');
 const crimeSync = require('../test-utils/crime-sync-runner');
 const eraseImports = require('../test-utils/erase-imports');
+const setServiceUrl = require('../test-utils/set-service-url');
+const login = require('../test-utils/login');
+const logout = require('../test-utils/logout');
 
 describe('[functional] crime-sync import command', () => {
 
 	before(async () => {
-		await config.set('serviceUrl', 'http://127.0.0.1:4000/');
-		await config.save();
+		await setServiceUrl('http://127.0.0.1:4000/');
+		await login();
 		await eraseImports();
+	});
+
+	after(async () => {
+		await logout();
 	});
 
 	context('with a informed pdf file url', () => {

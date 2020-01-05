@@ -1,20 +1,28 @@
 # crime-sync-cli &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/paulosales/crimemap-sync-cli/blob/master/LICENSE) [![Build Status](https://travis-ci.com/paulosales/crimemap-sync-cli.svg?branch=master)](https://travis-ci.com/paulosales/crimemap-sync-cli) [![codecov](https://codecov.io/gh/paulosales/crimemap-sync-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/paulosales/crimemap-sync-cli)
 
-**crime-sync-cli** is CLI tool that provides useful commands for import crimes data to crimemap database.
+**crime-sync-cli** is CLI tool that provides useful commands to import crimes data to crimemap database.
+It is a interface to **[crimemap-sync-api](https://github.com/paulosales/crimemap-sync-api)** server that you can use to dispatch data syncronization workers on its api server.
+
+## Overview diagram
+The diagram below gives a ideia of how the syncronization process works.
+
+![Diagram](diagrams/crimemap-sync-cli-diagram.png)
 
 ## Installation
 
-Install **crime-sync-cli** CLI with
+Install **crime-sync-cli** with
 
 ```bash
-$ npm install -g paulosales/crime-sync-cli
+$ npm i --global crimemap-sync-cli
 ```
 
-Test the installation with
+And type the following line to test the installation
 
 ```bash
-$ crime-sync --help
+$ crime-sync --version
 ```
+
+Since the **crimemap-sync-cli** is just a interface to syncronization server, you need to install the [sync server](https://github.com/paulosales/crimemap-sync-api) as well. Follow the [these instructions](https://github.com/paulosales/crimemap-sync-api#installation) to get sync server installed.
 
 ## Usage
 
@@ -41,6 +49,7 @@ Examples:
 ## Tech stack
 
 * [Commander](https://github.com/tj/commander.js/)
+* [Apollo-Client](https://github.com/apollographql/apollo-client)
 * [MochaJs](https://mochajs.org/)
 
 ## License
