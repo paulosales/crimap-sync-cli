@@ -31,6 +31,5 @@ deploy:
   api_key:
     secure: VO7hDS1n+us4+NuH3XKA8wD7Nf2G1Zz6ODLmu4siXbCvrdYtKvUsxQJ1sSjsghmA67TUz3+dmK5I0/1H9cGk1/Al5UBYDtCICDbA0wKa6hsOLgBc/YOPU0maK2JFbekJAFW2Bgi0xKJrnZnBBdtCVbuI0Y6XyOYjwDrUX8yk6bvSayBOqcrPQOuFBV0HOrzebHC6ruRFyDHY0Ow6gy9E1/RZS2pJfyPQaLLFYQK8UYiIko3NgNVMMLjZO8e4j1A/J0KPxbllANHCDCIFKqeMgmO4bp/x+UGOzPa+X0lM3egovxkcIxRb2M43abR7Mwgi1cVe6mfIQArpIz5n5A21QhKSydrntLqMmj+G30Xlt9johc7AY/N9LzoLsKstsh7vlbwQaVtlKCsmZP2KN1B+IK+1FL9MhAtUV44+7YMJRYfMRh+0JXlmf4s6DwnXC8aX6e/4ubCMZy9OUZj3SUJR3XF7/hGF+1rRd+8FVSM7cSHAio18mFdgGrn+Lo41bc74Ah86K4puAYag3efw6BrHMi1uRk1Dz/i9Ahnh9Rf4+jmqo9WLcicz8koxpj4U67tNyQhOC8SfEblpAvNmvEvA2ZlQYG8EtLYViVRZga+4+3k7t20m3URk3Xw7IZyksgTkKC4iO4bv4i9Qk0B02dYdJubA3LUjWKnnRbq/9Dsn0M0=
   on:
-    tags: true
     branch: master
     repo: paulosales/crimemap-sync-cli
