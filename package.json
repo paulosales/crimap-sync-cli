@@ -1,6 +1,6 @@
 {
   "name": "crimemap-sync-cli",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A syncronizer client tool to import crime data to crimemap database.",
   "main": "crime-sync.js",
   "scripts": {
