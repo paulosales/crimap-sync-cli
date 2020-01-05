@@ -10,8 +10,6 @@ branches:
   only:
     - master
     - dev
-env:
-  - CODECOV_TOKEN=0e354bd2-c9a3-471f-a187-521a7ac7d713
 cache: yarn
 services:
   - docker
@@ -28,8 +26,7 @@ script:
 deploy:
   provider: npm
   email: paulosales@gmail.com
-  api_key:
-    secure: GzbWT2S2g/B+LbPlEv3EBMlILzuCyfVmThfL4IgGogQ/WkoadONfGs2pi96NnLjMLFkaoSGhwW+ukpTiwzcSGtFpVPL8zbyM7jh73G42D0vFb74pvlZInXP4CBNT1pEaJlHOYoX6qGeOM+FMELXuuE4e7Ui8mhndlPpp0y6qmeXwVcBRvf4CumTl8XWOGqlMfoXTvgVGV+x88W41dbeyeyQiWLwphnkEDi4tPCas9yUw9bxIEbS2jsKYwlc3GII3Xul0rzPJBB8QuvpSLFgugIEFYS1mgTpwl4iYqeLWy0WRBZrTMo70hC/GfzAtDuFcWBwYeaUaAPVybYQt+dHqCWF43ejUh+4c/qNRjTyaq9KwVjRlBSviksiDOm1DgIQ8Nlh+QdLW+VjDn9Nov24e97LGDzB5mVTycXjroXW91+K69y7LJtWg0XtlgE9C/5soHsS178qhicUf8xS8IEKXYWIkLTW062awRJ2UmYxQD8UjJFdWOS+wiFi6Ev0alOicdKPJmM7pCG4iqsRgZdlrGyR0/JlnNEfclIr39LxsQBLjt8AGxFRT28ME1rWeEZMu5Z4rIF6Zsq5MKocUfidWt9p2l3WWr5Mqztzrb9joxaICdnBEl3+gqoiysPyXV885VMaRlXEvNi8EWdyGtBprM6SOQ4eUhNPxpgquyINTrX0=
+  api_key: $NPM_API_KEY
   on:
     branch: master
     repo: paulosales/crimemap-sync-cli
