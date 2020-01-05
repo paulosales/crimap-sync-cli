@@ -24,6 +24,7 @@ script:
   - yarn test
   - codecov
 deploy:
+  edge: true
   provider: npm
   email: "paulosales@gmail.com"
   api_key: "$NPM_API_KEY"
