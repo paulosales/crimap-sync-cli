@@ -7,12 +7,12 @@
 
 /* eslint-env mocha */
 
-const sinon = require('sinon');
-const chai = require('chai');
-const { config } = require('../../../src/config');
-const logoutCommand = require('../../../src/commands/logout');
+const sinon = require("sinon");
+const chai = require("chai");
+const { config } = require("../../../src/config");
+const logoutCommand = require("../../../src/commands/logout");
 
-describe('[unit] crimesync logout command', () => {
+describe("[unit] crimesync logout command", () => {
   let sandbox;
 
   beforeEach(() => {
@@ -21,17 +21,17 @@ describe('[unit] crimesync logout command', () => {
 
   afterEach(() => {
     sandbox.restore();
-  })
+  });
 
-  it('should logged out', () => {
-    const setConfigStub = sandbox.stub(config, 'set');
-    const saveConfigStub = sandbox.stub(config, 'save');
-    const writeStub = sandbox.stub(process.stdout, 'write');
+  it("should logged out", () => {
+    const setConfigStub = sandbox.stub(config, "set");
+    const saveConfigStub = sandbox.stub(config, "save");
+    const writeStub = sandbox.stub(process.stdout, "write");
 
     logoutCommand();
 
-    chai.expect(setConfigStub.calledWith('authToken', undefined));
+    chai.expect(setConfigStub.calledWith("authToken", undefined));
     chai.expect(saveConfigStub.calledOnce);
-    chai.expect(writeStub.calledWith('You are logged out.\n'));
+    chai.expect(writeStub.calledWith("You are logged out.\n"));
   });
 });

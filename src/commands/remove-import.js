@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-const debug = require('debug').debug('crimemap-sync-cli');
-const gql = require('graphql-tag');
-const getClient = require('../graphql/client');
+const debug = require("debug").debug("crimemap-sync-cli");
+const gql = require("graphql-tag");
+const getClient = require("../graphql/client");
 
 const REMOVE_IMPORT = gql`
   mutation RemoveImport($id: ID!) {
@@ -17,10 +17,10 @@ const REMOVE_IMPORT = gql`
   }
 `;
 
-module.exports = async (id) => {
-  debug('removing import id %s.', id)
-  if(id.length !== 24) {
-    debug('ID %s is invalid', id);
+module.exports = async id => {
+  debug("removing import id %s.", id);
+  if (id.length !== 24) {
+    debug("ID %s is invalid", id);
     process.stderr.write(`The id '${id}' is invalid.\n`);
     return;
   }
@@ -35,9 +35,9 @@ module.exports = async (id) => {
       }
     });
     process.stdout.write(`Import '${removed.data.removeImport.id}' removed.\n`);
-    debug('Import %s removed', removed.data.removeImport.id);
-  } catch(e) {
-    debug('error removing import id %s: %s.', id, e.message);
+    debug("Import %s removed", removed.data.removeImport.id);
+  } catch (e) {
+    debug("error removing import id %s: %s.", id, e.message);
     e.graphQLErrors.forEach(error => {
       process.stderr.write(`${error.message}\n`);
     });

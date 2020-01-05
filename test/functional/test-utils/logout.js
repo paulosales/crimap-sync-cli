@@ -5,8 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-const crimeSync = require('./crime-sync-runner');
+const crimeSync = require("./crime-sync-runner");
 
 module.exports = async () => {
-  await crimeSync(['logout']);
-}
+  await crimeSync(["logout"]);
+};

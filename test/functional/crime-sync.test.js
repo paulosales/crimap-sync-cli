@@ -6,38 +6,37 @@
  */
 
 /* eslint-env node, mocha */
-const path = require('path');
-const fs = require('fs');
-const assert = require('chai').assert;
-const crimeSync = require('./test-utils/crime-sync-runner');
+const path = require("path");
+const fs = require("fs");
+const assert = require("chai").assert;
+const crimeSync = require("./test-utils/crime-sync-runner");
 
-describe('[functional] crime-sync', () => {
+describe("[functional] crime-sync", () => {
   let helpText;
 
   before(async () => {
-    fs.readFile(
-      path.dirname(__filename) + '/help.txt',
-      'utf8',
-      (err, data)=>{
-        if(err) {
-          throw err;
-        }
-        helpText = data;
+    fs.readFile(path.dirname(__filename) + "/help.txt", "utf8", (err, data) => {
+      if (err) {
+        throw err;
       }
-    )
-  })
+      helpText = data;
+    });
+  });
 
-  context('with no parameters', () => {
-    it('should return the help text', async () => {
+  context("with no parameters", () => {
+    it("should return the help text", async () => {
       const ret = await crimeSync();
       assert.equal(ret.stdout, helpText);
     });
   });
 
-  context('with a invalid command', () => {
-    it('should throw a error', async () => {
-      const ret = await crimeSync(['invalid-command']);
-      assert.equal(ret.stderr, 'Invalid command: invalid-command\nSee --help for a list of available commands.\n');
-    })
-  })
+  context("with a invalid command", () => {
+    it("should throw a error", async () => {
+      const ret = await crimeSync(["invalid-command"]);
+      assert.equal(
+        ret.stderr,
+        "Invalid command: invalid-command\nSee --help for a list of available commands.\n"
+      );
+    });
+  });
 });

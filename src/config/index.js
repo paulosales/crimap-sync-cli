@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-const config = require('./config');
+const config = require("./config");
 
 module.exports = {
   config
