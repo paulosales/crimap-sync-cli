@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-const { config } = require('../../../src/config');
+const { config } = require("../../../src/config");
 
 module.exports = async url => {
-  await config.set('serviceUrl', url);
-	await config.save();
-}
+  await config.set("serviceUrl", url);
+  await config.save();
+};

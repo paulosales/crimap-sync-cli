@@ -5,34 +5,38 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-const debug = require('debug').debug('crimemap-sync-cli');
-const readline = require('readline-sync');
-const fetch = require('node-fetch');
-const { ApolloClient } = require('apollo-client');
-const { InMemoryCache } = require('apollo-cache-inmemory');
-const { createHttpLink } = require('apollo-link-http');
-const { setContext } = require('apollo-link-context')
-const checkServiceUrl = require('../helpers/check-service-url');
-const { config } = require('../config');
+const debug = require("debug").debug("crimemap-sync-cli");
+const readline = require("readline-sync");
+const fetch = require("node-fetch");
+const { ApolloClient } = require("apollo-client");
+const { InMemoryCache } = require("apollo-cache-inmemory");
+const { createHttpLink } = require("apollo-link-http");
+const { setContext } = require("apollo-link-context");
+const checkServiceUrl = require("../helpers/check-service-url");
+const { config } = require("../config");
 
 let client;
 async function getClient() {
-  if( !client ) {
+  if (!client) {
     let serviceUrl;
-    while( !serviceUrl ) {
-      debug('getting the serviceUrl.')
-      serviceUrl = await config.get('serviceUrl');
+    while (!serviceUrl) {
+      debug("getting the serviceUrl.");
+      serviceUrl = await config.get("serviceUrl");
       debug(`serviceUrl = ${serviceUrl}`);
-      if(!serviceUrl) {
-        debug('Asking the serviceUrl to user.');
-        serviceUrl = readline.question('Please inform the service crime map api url: ');
-        
-        if(await checkServiceUrl(serviceUrl)) {
-          config.set('serviceUrl', serviceUrl);
+      if (!serviceUrl) {
+        debug("Asking the serviceUrl to user.");
+        serviceUrl = readline.question(
+          "Please inform the service crime map api url: "
+        );
+
+        if (await checkServiceUrl(serviceUrl)) {
+          config.set("serviceUrl", serviceUrl);
           await config.save();
           process.stdout.write(`Service url ${serviceUrl} saved.\n`);
         } else {
-          process.stdout.write(`The service URL ${serviceUrl} is not valid or the service is not available.\n`);
+          process.stdout.write(
+            `The service URL ${serviceUrl} is not valid or the service is not available.\n`
+          );
           process.stdout.write(`Try again or type CTRL + C to cancel.\n`);
           serviceUrl = null;
         }
@@ -41,24 +45,24 @@ async function getClient() {
       }
     }
 
-    const authToken = await config.get('authToken');
+    const authToken = await config.get("authToken");
 
     const cache = new InMemoryCache();
-    
-    const httpLink = createHttpLink({uri: serviceUrl, fetch});
+
+    const httpLink = createHttpLink({ uri: serviceUrl, fetch });
     const authLink = setContext((_, { headers }) => {
       return {
         headers: {
           ...headers,
-          authorization: authToken?`Bearer ${authToken}`: '',
+          authorization: authToken ? `Bearer ${authToken}` : ""
         }
-      }
+      };
     });
 
     client = new ApolloClient({
       cache,
-      link: authLink.concat(httpLink),
-    }); 
+      link: authLink.concat(httpLink)
+    });
   }
 
   return client;

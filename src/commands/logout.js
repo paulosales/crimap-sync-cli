@@ -5,15 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-const debug = require('debug').debug('crimemap-sync-cli');
+const debug = require("debug").debug("crimemap-sync-cli");
 
-const { config } = require('../../src/config');
+const { config } = require("../../src/config");
 
 module.exports = async () => {
-  debug('Loging out');
-  debug('Removing authToken.');
-  await config.set('authToken', undefined);
+  debug("Loging out");
+  debug("Removing authToken.");
+  await config.set("authToken", undefined);
   await config.save();
-  debug('Token removed.');
-  process.stdout.write('You are logged out.\n');
+  debug("Token removed.");
+  process.stdout.write("You are logged out.\n");
 };

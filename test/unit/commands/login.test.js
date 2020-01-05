@@ -6,83 +6,79 @@
  */
 
 /* eslint-env mocha */
-const chai = require('chai');
-const sinon = require('sinon');
-const proxyquire = require('proxyquire');
-const { config } = require('../../../src/config');
+const chai = require("chai");
+const sinon = require("sinon");
+const proxyquire = require("proxyquire");
+const { config } = require("../../../src/config");
 
-describe('[unit] crimesync login command', () => {
+describe("[unit] crimesync login command", () => {
   let sandbox;
 
-  beforeEach((done)=>{
+  beforeEach(done => {
     sandbox = sinon.createSandbox();
     done();
   });
 
-  afterEach((done) => {
+  afterEach(done => {
     sandbox.restore();
     done();
   });
 
-  context('with a invalid username and password', () => {
-    it('should fail', async () => {
+  context("with a invalid username and password", () => {
+    it("should fail", async () => {
       const loginResult = {
         data: {
           login: {
             success: false,
-            message: 'Username or password is invalid!',
+            message: "Username or password is invalid!"
           }
         }
       };
       const mutateStub = sandbox.stub().returns(loginResult);
-      const getClientStub = sandbox.stub().returns({mutate: mutateStub});
-    
-      const loginCommand = proxyquire(
-        '../../../src/commands/login', 
-        {
-          "../graphql/client": getClientStub
-        }
-      );
+      const getClientStub = sandbox.stub().returns({ mutate: mutateStub });
+
+      const loginCommand = proxyquire("../../../src/commands/login", {
+        "../graphql/client": getClientStub
+      });
 
       const stdErrWriteStub = sandbox.stub(process.stderr, "write");
 
-      await loginCommand('user', 'wrong');
+      await loginCommand("user", "wrong");
 
-      chai.assert.isTrue( stdErrWriteStub.calledOnce );
-      chai.assert.isTrue( stdErrWriteStub.calledWith('Username or password is invalid!\n') );
+      chai.assert.isTrue(stdErrWriteStub.calledOnce);
+      chai.assert.isTrue(
+        stdErrWriteStub.calledWith("Username or password is invalid!\n")
+      );
     });
   });
 
-  context('with a valid username and password', () => {
-    it('should login and save the token.', async () => {
+  context("with a valid username and password", () => {
+    it("should login and save the token.", async () => {
       const loginResult = {
         data: {
           login: {
             success: true,
-            token: 'secret auth token returned',
+            token: "secret auth token returned"
           }
         }
       };
       const mutateStub = sandbox.stub().returns(loginResult);
-      const getClientStub = sandbox.stub().returns({mutate: mutateStub});
-      const setConfigSpy = sandbox.spy(config, 'set');
-      const saveConfigStub = sandbox.stub(config, 'save');
-    
-      const loginCommand = proxyquire(
-        '../../../src/commands/login', 
-        {
-          '../graphql/client': getClientStub
-        }
-      );
+      const getClientStub = sandbox.stub().returns({ mutate: mutateStub });
+      const setConfigSpy = sandbox.spy(config, "set");
+      const saveConfigStub = sandbox.stub(config, "save");
+
+      const loginCommand = proxyquire("../../../src/commands/login", {
+        "../graphql/client": getClientStub
+      });
 
       const stdOutWriteStub = sandbox.stub(process.stdout, "write");
 
-      await loginCommand('user', 'right');
+      await loginCommand("user", "right");
 
-      chai.assert.isTrue( stdOutWriteStub.calledOnce );
-      chai.assert.isTrue( stdOutWriteStub.calledWith('You are logged in.\n') );
-      chai.assert.isTrue( setConfigSpy.calledOnce );
-      chai.assert.isTrue( saveConfigStub.calledOnce );
+      chai.assert.isTrue(stdOutWriteStub.calledOnce);
+      chai.assert.isTrue(stdOutWriteStub.calledWith("You are logged in.\n"));
+      chai.assert.isTrue(setConfigSpy.calledOnce);
+      chai.assert.isTrue(saveConfigStub.calledOnce);
     });
   });
 });

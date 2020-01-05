@@ -5,10 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-const crimeSync = require('./crime-sync-runner');
+const crimeSync = require("./crime-sync-runner");
 
 module.exports = async qty => {
-  for(let i = 1; i <= qty; i++) {
-    await crimeSync(['import', `http://domain.com/test-file_${i}.pdf`]);
+  for (let i = 1; i <= qty; i++) {
+    await crimeSync(["import", `http://domain.com/test-file_${i}.pdf`]);
   }
-}
+};

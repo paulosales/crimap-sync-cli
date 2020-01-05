@@ -4,6 +4,7 @@
 It is a interface to **[crimemap-sync-api](https://github.com/paulosales/crimemap-sync-api)** server that you can use to dispatch data syncronization workers on its api server.
 
 ## Overview diagram
+
 The diagram below gives a ideia of how the syncronization process works.
 
 ![Diagram](diagrams/crimemap-sync-cli-diagram.png)
@@ -48,9 +49,9 @@ Examples:
 
 ## Tech stack
 
-* [Commander](https://github.com/tj/commander.js/)
-* [Apollo-Client](https://github.com/apollographql/apollo-client)
-* [MochaJs](https://mochajs.org/)
+- [Commander](https://github.com/tj/commander.js/)
+- [Apollo-Client](https://github.com/apollographql/apollo-client)
+- [MochaJs](https://mochajs.org/)
 
 ## License
 

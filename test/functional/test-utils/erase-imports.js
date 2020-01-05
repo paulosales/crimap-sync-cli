@@ -5,21 +5,21 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-const crimeSync = require('./crime-sync-runner');
+const crimeSync = require("./crime-sync-runner");
 
 module.exports = async () => {
   //erase imports collection data.
-  const ret = await crimeSync(['list-imports']);
-  const lines = ret.stdout.split('\n');
+  const ret = await crimeSync(["list-imports"]);
+  const lines = ret.stdout.split("\n");
 
   lines.shift();
   lines.shift();
   lines.shift();
   lines.pop();
 
-  for(let i = 0; i < lines.length; i++) {
+  for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
-    const columns = line.split(' ');
-    await crimeSync(['remove-import', columns[0]]);
+    const columns = line.split(" ");
+    await crimeSync(["remove-import", columns[0]]);
   }
 };

@@ -5,12 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-const debug = require('debug').debug('crimemap-sync-cli');
-const fetch = require('node-fetch');
-const gql = require('graphql-tag');
-const { InMemoryCache } = require('apollo-cache-inmemory');
-const { HttpLink } = require('apollo-link-http');
-const { ApolloClient } = require('apollo-client');
+const debug = require("debug").debug("crimemap-sync-cli");
+const fetch = require("node-fetch");
+const gql = require("graphql-tag");
+const { InMemoryCache } = require("apollo-cache-inmemory");
+const { HttpLink } = require("apollo-link-http");
+const { ApolloClient } = require("apollo-client");
 
 module.exports = async function checkServiceUrl(serviceUrl) {
   debug(`Checking if the service URL '${serviceUrl}' is valid.`);
@@ -29,17 +29,18 @@ module.exports = async function checkServiceUrl(serviceUrl) {
     const INFO = gql`
       query {
         info {
-          version name
+          version
+          name
         }
       }
     `;
 
-    const res = await client.query({query: INFO});
+    const res = await client.query({ query: INFO });
     debug(`service test request result: ${res.data.info.name}`);
-    const isValid = res.data.info.name === 'crimemap-sync-api';
+    const isValid = res.data.info.name === "crimemap-sync-api";
     debug(`is valid = ${isValid}.`);
     return isValid;
-  } catch(e) {
+  } catch (e) {
     debug(`is valid = false because it raises the exception ${e.message}.`);
     return false;
   }

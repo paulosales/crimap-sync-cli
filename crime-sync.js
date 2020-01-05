@@ -7,6 +7,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-const commandParser = require('./src/command-parser');
+const commandParser = require("./src/command-parser");
 
 commandParser(process.argv);

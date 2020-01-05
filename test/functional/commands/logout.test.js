@@ -6,14 +6,12 @@
  */
 
 /* eslint-env mocha */
-const assert = require('chai').assert;
-const crimeSync = require('../test-utils/crime-sync-runner');
+const assert = require("chai").assert;
+const crimeSync = require("../test-utils/crime-sync-runner");
 
-describe('[functional] crimesync logout command', () => {
-  
-  it('should logout', async () => {
-    const ret = await crimeSync(['logout']);
-    assert.equal(ret.stdout, 'You are logged out.\n');
+describe("[functional] crimesync logout command", () => {
+  it("should logout", async () => {
+    const ret = await crimeSync(["logout"]);
+    assert.equal(ret.stdout, "You are logged out.\n");
   });
-
 });
