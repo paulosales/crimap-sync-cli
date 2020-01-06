@@ -30,4 +30,5 @@ deploy:
   api_key: "$NPM_API_KEY"
   on:
     branch: master
+    node_js: "13"
     repo: paulosales/crimemap-sync-cli
