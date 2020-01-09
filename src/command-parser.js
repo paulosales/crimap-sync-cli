@@ -16,7 +16,7 @@ module.exports = function commandParser(argv) {
   program
     .name(`${chalk.blueBright(programName)}`)
     .usage("[command]")
-    .version(packageJson.version)
+    .version(`version ${packageJson.version}`)
     .usage(`${chalk.blueBright("[command]")}`)
     .description(packageJson.description);
 
