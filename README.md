@@ -12,11 +12,11 @@ The commands that you can use are:
 
 ## Table of contents
 
-[1. Overview diagram](#overview-diagram)
-[2. Installation](#installation)
-[3. Usage](#usage)
-[4. Tech stack](#tech-stack)
-[5. License](#license)
+- [1. Overview diagram](#overview-diagram)
+- [2. Installation](#installation)
+- [3. Usage](#usage)
+- [4. Tech stack](#tech-stack)
+- [5. License](#license)
 
 ## Overview diagram
 
