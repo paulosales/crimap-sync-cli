@@ -10,6 +10,14 @@ The commands that you can use are:
 - **list-imports** - list top N imports from the crime map database.
 - **remove-import** - remove import headers and all data imported from the crime map database.
 
+## Table of contents
+
+[1. Overview diagram](#overview-diagram)
+[2. Installation](#installation)
+[3. Usage](#usage)
+[4. Tech stack](#tech-stack)
+[5. License](#license)
+
 ## Overview diagram
 
 The diagram below shows how data extracted from a PDF file is imported to the crime map database.
