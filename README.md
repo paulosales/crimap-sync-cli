@@ -1,9 +1,8 @@
-<center>
+<p align="center">
   <img width="150" src="images/logo.png">
-  <h1>crime-sync-cli</h1>
-</center>
+</p>
 
-# [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/paulosales/crimemap-sync-cli/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/crimemap-sync-cli.svg?style=flat&color=blue)](https://www.npmjs.com/package/crimemap-sync-cli) [![Build Status](https://travis-ci.com/paulosales/crimemap-sync-cli.svg?branch=master)](https://travis-ci.com/paulosales/crimemap-sync-cli) [![codecov](https://codecov.io/gh/paulosales/crimemap-sync-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/paulosales/crimemap-sync-cli) [![code quality](https://img.shields.io/codefactor/grade/github/paulosales/crimemap-sync-cli/master)](https://www.codefactor.io/repository/github/paulosales/crimemap-sync-cli) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=paulosales_crimemap-sync-cli&metric=alert_status)](https://sonarcloud.io/dashboard?id=paulosales_crimemap-sync-cli)
+# crime-sync-cli &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/paulosales/crimemap-sync-cli/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/crimemap-sync-cli.svg?style=flat&color=blue)](https://www.npmjs.com/package/crimemap-sync-cli) [![Build Status](https://travis-ci.com/paulosales/crimemap-sync-cli.svg?branch=master)](https://travis-ci.com/paulosales/crimemap-sync-cli) [![codecov](https://codecov.io/gh/paulosales/crimemap-sync-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/paulosales/crimemap-sync-cli) [![code quality](https://img.shields.io/codefactor/grade/github/paulosales/crimemap-sync-cli/master)](https://www.codefactor.io/repository/github/paulosales/crimemap-sync-cli) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=paulosales_crimemap-sync-cli&metric=alert_status)](https://sonarcloud.io/dashboard?id=paulosales_crimemap-sync-cli)
 
 **crime-sync-cli** is CLI tool that provides useful commands to import crime data to the crime map database.
 It is an interface to **[crimemap-sync-api](https://github.com/paulosales/crimemap-sync-api)** server that you can use to dispatch commands to the data synchronization server.
